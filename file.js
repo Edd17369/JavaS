@@ -2,48 +2,61 @@
 /* multi-line comment */
 
 
-// Built in functions
-Math.max(val1,val2);
+////////////////////////////////////////  Built in functions
+Math.max(val1,val2); // val1 > val2 ? val1 : val2
+
+console.dir(list); // como obj.__dir__() o dir(obj), solo funciona en el web browser
+list instanceof Array // isinstances(onj, class)
 
 
 // Logical Operators
 // || or
 // && and
 // ! not
+true // no True
+false // no False
 
 
-// Arrays
+////////////////////////////////////////  Arrays
 
-var list = [1,2,3]; // Usa este para crear arrays
+// Crear arrays
+var list = [1,2,3]; 
 var list2 = new Array(1,2,3);
+var list3 = new Array(5).fill(0); // [0 for in range(5)]
+var list3 = Array.from("Hello"); // Array.from(obj) == list(obj)
+
+
+// Attrs
 var len = list.length; // Su unico attr xd
-console.dir(list); // solo funciona en el web browser
+
+// Get elements or slices
 console.log(list[1]+list[0], list[list.length-1]); // no existe list[-1]
+var s = list.slice(0,2) // como fruits[0:2], no incluye al ultimo
 
-var list = [1,2,-3172, 3, 45, 3, 3];
-var fruits = ["Banana", "Orange", "Apple", "Mango"];
+// Methods
+list.includes(val) // val in list, no existe 'in' en JS  
 
-var s = fruits.slice(0,2) // como fruits[0:2], no incluye al ultimo
-list.includes(val) // si val esta en array, no existe 'in' en JS  
-var arr = Array.from("Hello"); // Array.from(obj) == list(obj)
-list.find(fcn); // find the first elem that pass the test
-list.concat(fruits); // concat() == extend()
+list.push(val); // append(val)
+list.unshift(val); // insert(0, val)
+list.concat(list2); // extend(list2)
+list.pop(); // pop(-1)
+list.shift(); // pop(0)
+
+list.join(","); // ','.join(list)
 
 
-
-
-// Strings
+////////////////////////////////////////  Strings
 
 console.log(typeof list); // typeof obj == type(obj)
 console.log(typeof String(list), list);  // String(obj) == str(obj)
 console.log("FirstLine" + " \n Hey" + " zzzzzzzzz");
+console.log("+".repeat(5)+"\n")
 
 console.log(6 != 4); // Los operadores booleanos son los mismos
 
 
 var str = "Hello, world!";
 console.log(str.length); // obj.len == len(obj),  pero hay que ponerlo en una variable
-
 console.log("Hello".length);
 
 
@@ -60,9 +73,9 @@ console.log(dict);
 
 
 
-function strToHash(str){
+function strToHash(str) {
     console.log(str)
-    const str2 = str.replace(/ /g,'');
+    const str2 = str.replace(/ /g,''); // g es de 'global' para que remplace todos
     var dict = {};
     var list = str2.split(',');
     for (i=0; i<list.length; i++) {
@@ -90,16 +103,19 @@ s.has(val) // True si val in s
 var dict = {};
 dict[new_key] = new_value;
 
-var array = [3,2,1,2,3,3,2,2,2,3,4];
-var s = {};
-var ans = 0;
-var i;
-for (i=0; i<array.length; i++) {
-  if (!(array[i] in s)) {
-    s[array[i]] = 1;
+
+
+// 
+function numDiv(int) {
+  var ans = 0;
+  for (i=1;i<Math.floor(Math.sqrt(int))+1;i++) {
+    if (int%i == 0 ) {
+      ans += 2;
+    }
   }
-  else {
-    s[array[i]]++;
-  }
+  if (Math.floor(Math.sqrt(int))**2 == int) {ans -= 1}
+return ans
 }
-  console.log(s)
+
+
+console.log(numDiv(4))

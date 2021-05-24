@@ -12,3 +12,17 @@ def fan(str):
     return H
 
 print(fan("a=1, b=2, c=3, d=4"))
+
+from math import sqrt
+def divisors(n):
+    v = [1]
+    for i in range(2, int(sqrt(n))+1):
+        if n%i == 0:
+            v.extend([i,int(n/i)])
+    return list(set(v))
+
+print(len(divisors(5027)))
+
+a = ['a','b']
+b = ['a', 'b']
+print(a == b)

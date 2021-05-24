@@ -25,4 +25,8 @@ print(len(divisors(5027)))
 
 a = ['a','b']
 b = ['a', 'b']
-print(a == b)
+
+a = [1,2,3,4,5]
+print(a)
+a.sort(key= lambda x: -x)
+print(a)

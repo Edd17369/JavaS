@@ -8,6 +8,8 @@ Math.max(val1,val2); // val1 > val2 ? val1 : val2
 console.dir(list); // como obj.__dir__() o dir(obj), solo funciona en el web browser
 list instanceof Array // isinstances(onj, class)
 
+var max = -Infinity; // max = float('Inf')
+
 
 // Logical Operators
 // || or
@@ -20,7 +22,7 @@ false // no False
 ////////////////////////////////////////  Arrays
 
 // Crear arrays
-var list = [1,2,3]; 
+var list = [1,2,3];
 var list2 = new Array(1,2,3);
 var list3 = new Array(5).fill(0); // [0 for in range(5)]
 var list3 = Array.from("Hello"); // Array.from(obj) == list(obj)
@@ -31,18 +33,49 @@ var len = list.length; // Su unico attr xd
 
 // Get elements or slices
 console.log(list[1]+list[0], list[list.length-1]); // no existe list[-1]
-var s = list.slice(0,2) // como fruits[0:2], no incluye al ultimo
+list.slice(0,2); // como fruits[0:2], no incluye al ultimo
+list.splice(2, 0, 'a', 'b') // NO en python? splice(pos1, num1, elem1, elem2, ...) agrega elemk a la lista en la posicion pos1 y elimina num1 elemetos originales de la lista antes de insertar 'a', 'b', ...
 
 // Methods
-list.includes(val) // val in list, no existe 'in' en JS  
+list.includes(val) // val in list, no existe 'in' en JS 
+list.indexOf(val) // index(val)
 
 list.push(val); // append(val)
 list.unshift(val); // insert(0, val)
-list.concat(list2); // extend(list2)
-list.pop(); // pop(-1)
+list.concat(list2); // extend(list2), en python let be b = list2, if list2.extend(list3) then also b changes
+list4 = [1,2,3, ...list2] // list4 = [1,2,3], list4 + list2, en python let be b = [1,2,3], if list4 + list2 then b don't cahnges
+list.pop(n); // pop(n)
 list.shift(); // pop(0)
 
 list.join(","); // ','.join(list)
+
+list = [1,5,3,6]
+list.sort() // sort()
+list.sort(function(a, b){return b - a}); // sort(key= lambda val: -val), sort en orden decreciente
+list.sort(function(a, b){return 0.5 - Math.random()}); // NO en python? , sort in random order 
+list.reverse() // sort(reverse=True)
+
+function myArrayMax(arr) { // max(arr)
+  var len = arr.length;
+  var max = -Infinity;
+  while (len--) {
+    if (arr[len] > max) {
+      max = arr[len];
+    }
+  }
+  return max;
+} 
+
+function myArrayMin(arr) { // min
+  var len = arr.length;
+  var min = Infinity;
+  while (len--) {
+    if (arr[len] < min) {
+      min = arr[len];
+    }
+  }
+  return min;
+} 
 
 
 ////////////////////////////////////////  Strings
